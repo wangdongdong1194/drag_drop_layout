@@ -52,7 +52,7 @@
         transform-origin: center center;
     }
 
-    .img_title_desc:hover .img {
+    .img_wrap:hover .img {
         transform: scale(1.08);
     }
 
@@ -65,6 +65,9 @@
         margin-bottom: 15px;
         width: fit-content;
     }
+     .title:hover {
+        color: blueviolet;
+     }
 
     .clickable {
         cursor: pointer;

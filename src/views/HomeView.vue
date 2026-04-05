@@ -20,7 +20,6 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import GridStackBoard from '../components/GridStackBoard.vue'
-    import TestContent from '../components/TestContent.vue'
     import ImgTitleDesc from '../templates/img_title_desc.vue'
     import type { GridLayoutItem, GridStackBoardExpose, WidgetItem } from '../types/grid'
 
@@ -30,10 +29,8 @@
     let nextId = 1
 
     const widgets: WidgetItem[] = [
-        { id: 'a', component: TestContent, x: 2, y: 0, w: 4, h: 3, scrollable: false },
-        { id: 'bb', component: TestContent, x: 4, y: 0, w: 4, h: 3, scrollable: true },
         {
-            id: 'c',
+            id: 'a',
             component: ImgTitleDesc,
             componentProps: {
                 src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
@@ -44,8 +41,24 @@
             },
             x: 0,
             y: 0,
-            w: 6,
-            h: 4,
+            w: 4,
+            h: 2,
+            scrollable: false,
+        },
+        {
+            id: 'b',
+            component: ImgTitleDesc,
+            componentProps: {
+                src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
+                title: '默认图文卡片',
+                desc: '这是来自 HomeView 的初始传参这是来自 HomeView 的初始传参',
+                link: 'https://www.cctv.com',
+                openMode: 'blank',
+            },
+            x: 0,
+            y: 0,
+            w: 2,
+            h: 2,
             scrollable: false,
         },
     ]
