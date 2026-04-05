@@ -21,6 +21,7 @@
     import { ref } from 'vue'
     import GridStackBoard from '../components/GridStackBoard.vue'
     import ImgTitleDesc from '../templates/img_title_desc.vue'
+    import ImgTitleSubTitle from '../templates/img_title_subTitle.vue'
     import type { GridLayoutItem, GridStackBoardExpose, WidgetItem } from '../types/grid'
 
     const layoutData = ref<GridLayoutItem[]>([])
@@ -46,13 +47,30 @@
             scrollable: false,
         },
         {
-            id: 'b',
+            id: 'bb',
             component: ImgTitleDesc,
             componentProps: {
                 src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
                 title: '默认图文卡片',
                 desc: '这是来自 HomeView 的初始传参这是来自 HomeView 的初始传参',
                 link: 'https://www.cctv.com',
+                openMode: 'blank',
+            },
+            x: 5,
+            y: 0,
+            w: 2,
+            h: 3,
+            scrollable: false,
+        },
+        {
+            id: 'c',
+            component: ImgTitleSubTitle,
+            componentProps: {
+                src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
+                title: '默认图文卡片',
+                subTitle: '这是子标题',
+                link: 'https://www.cctv.com',
+                subTitleLink: 'https://www.cctv.com',
                 openMode: 'blank',
             },
             x: 5,
