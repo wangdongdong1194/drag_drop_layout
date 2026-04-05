@@ -21,6 +21,7 @@
     import { ref } from 'vue'
     import GridStackBoard from '../components/GridStackBoard.vue'
     import TestContent from '../components/TestContent.vue'
+    import ImgTitleDesc from '../templates/img_title_desc.vue'
     import type { GridLayoutItem, GridStackBoardExpose, WidgetItem } from '../types/grid'
 
     const layoutData = ref<GridLayoutItem[]>([])
@@ -31,14 +32,33 @@
     const widgets: WidgetItem[] = [
         { id: 'a', component: TestContent, x: 2, y: 0, w: 4, h: 3 },
         { id: 'bb', component: TestContent, x: 4, y: 0, w: 4, h: 3 },
-        { id: 'c', component: TestContent, x: 8, y: 0, w: 4, h: 3 },
+        {
+            id: 'c',
+            component: ImgTitleDesc,
+            componentProps: {
+                src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
+                title: '默认图文卡片',
+                desc: '这是来自 HomeView 的初始传参这是来自 HomeView 的初始传参',
+                link: 'https://www.cctv.com',
+                openMode: 'blank',
+            },
+            x: 0,
+            y: 0,
+            w: 6,
+            h: 4,
+        },
     ]
 
     const addNewWidget = () => {
         const id = `new-${nextId}`
         const added = boardRef.value?.addWidget({
             id,
-            component: TestContent,
+            component: ImgTitleDesc,
+            componentProps: {
+                src: `https://picsum.photos/seed/${id}/480/320`,
+                title: `新增卡片 ${id}`,
+                desc: '这是通过 addWidget 传入的 props',
+            },
             x: 0,
             y: 99,
             w: 4,
@@ -65,7 +85,12 @@
         const id = `new-${nextId}`
         const added = boardRef.value?.addWidget({
             id,
-            component: TestContent,
+            component: ImgTitleDesc,
+            componentProps: {
+                src: `https://picsum.photos/seed/${id}/480/320`,
+                title: `跟随 ${selectedId} 新增`,
+                desc: '在选中节点后插入',
+            },
             x: base.x + base.w,
             y: base.y,
             w: base.w,

@@ -62,8 +62,13 @@
         syncSelectedStyle()
     }
 
-    const mountWidgetComponent = (widgetId: string, widgetComponent: WidgetItem['component'], hostEl: HTMLElement) => {
-        const app = createApp(widgetComponent)
+    const mountWidgetComponent = (
+        widgetId: string,
+        widgetComponent: WidgetItem['component'],
+        hostEl: HTMLElement,
+        componentProps?: WidgetItem['componentProps'],
+    ) => {
+        const app = createApp(widgetComponent, componentProps ?? {})
         app.mount(hostEl)
         widgetApps.set(widgetId, app)
     }
@@ -105,7 +110,7 @@
         const mountPoint = document.createElement('div')
         mountPoint.className = 'vue-widget-host'
         contentEl.replaceChildren(mountPoint)
-        mountWidgetComponent(widget.id, widget.component, mountPoint)
+        mountWidgetComponent(widget.id, widget.component, mountPoint, widget.componentProps)
         if (selectAfterAdd) {
             setSelectedWidget(widget.id)
         } else {
@@ -214,7 +219,8 @@
 
     :deep(.grid-stack-item-content) {
         overflow: auto;
-        background: greenyellow;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     }
 
     :deep(.grid-stack-item.is-selected .grid-stack-item-content) {

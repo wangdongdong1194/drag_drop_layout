@@ -10,6 +10,7 @@ export type GridLayoutItem = {
 
 export type WidgetItem = GridLayoutItem & {
     component: Component
+    componentProps?: Record<string, unknown>
 }
 
 export type GridStackBoardExpose = {
