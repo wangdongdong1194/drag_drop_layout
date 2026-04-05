@@ -67,6 +67,7 @@
         font-weight: 400;
         margin-bottom: 15px;
         width: fit-content;
+        height: 45px;
     }
 
     .title:hover {
@@ -80,6 +81,7 @@
     .subTitle {
         color: #999;
         font-size: 14px;
+        width: fit-content;
     }
     .subTitle:hover {
     color: blueviolet;

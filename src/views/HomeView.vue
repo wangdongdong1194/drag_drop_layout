@@ -67,7 +67,7 @@
             component: ImgTitleSubTitle,
             componentProps: {
                 src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
-                title: '默认图文卡片',
+                title: '文卡片默文卡片默文卡片默文卡片默',
                 subTitle: '这是子标题',
                 link: 'https://www.cctv.com',
                 subTitleLink: 'https://www.cctv.com',
