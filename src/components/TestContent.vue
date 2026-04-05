@@ -1,23 +1,14 @@
 <template>
-    <div class="testa">3</div>
-    <div class="testb"></div>
-    <div class="testc"></div>
+    <div class="demot">
+        <h3>这是一个测试组件</h3>
+        <p>你可以在这里放置任何内容，甚至是其他组件！</p>
+    </div>
 </template>
 <script setup lang="ts"></script>
 <style scoped>
-.testa {
-    width: 100%;
+.demot{
+    background-color: #f0f0f0;
+    border-radius: 4px;
     height: 100%;
-    background-color: greenyellow;
-}
-.testb {
-    width: 100%;
-    height: 100px;
-    background-color: green;
-}
-.testc {
-    width: 100%;
-    height: 100px;
-    background-color: purple;
 }
 </style>

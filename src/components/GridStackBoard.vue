@@ -15,12 +15,16 @@
         h: number
     }
 
+    type WidgetItem = GridLayoutItem & {
+        component: Component
+    }
+
     const emit = defineEmits<{
         layoutChange: [layout: GridLayoutItem[]]
     }>()
 
     const props = defineProps<{
-        widgetComponents: Record<string, Component>
+        widgetComponents: WidgetItem[]
     }>()
 
     const gridContainer = ref<HTMLElement | null>(null)
@@ -45,12 +49,7 @@
         emit('layoutChange', layout)
     }
 
-    const mountWidgetComponent = (widgetId: string, hostEl: HTMLElement) => {
-        const widgetComponent = props.widgetComponents[widgetId]
-        if (!widgetComponent) {
-            return
-        }
-
+    const mountWidgetComponent = (widgetComponent: Component, hostEl: HTMLElement) => {
         const app = createApp(widgetComponent)
         app.mount(hostEl)
         widgetApps.push(app)
@@ -64,19 +63,13 @@
         grid = GridStack.init(
             {
                 cellHeight: 90,
-                margin: 8,
+                margin: 4,
                 minRow: 4,
             },
             gridContainer.value,
         )
 
-        const demoWidgets = [
-            { id: 'a', x: 0, y: 0, w: 4, h: 3 },
-            { id: 'b', x: 4, y: 0, w: 4, h: 3 },
-            { id: 'c', x: 8, y: 0, w: 4, h: 3 },
-        ]
-
-        demoWidgets.forEach((widget) => {
+        props.widgetComponents.forEach((widget) => {
             if (!grid) {
                 return
             }
@@ -98,7 +91,7 @@
             const mountPoint = document.createElement('div')
             mountPoint.className = 'vue-widget-host'
             contentEl.replaceChildren(mountPoint)
-            mountWidgetComponent(widget.id, mountPoint)
+            mountWidgetComponent(widget.component, mountPoint)
         })
 
         grid.on('change', syncLayoutData)
@@ -119,18 +112,13 @@
 
 <style scoped>
     .grid-stack {
-        min-height: 420px;
-        background: #f3f4f6;
-        border: 1px solid #d1d5db;
-        border-radius: 5px;
-        padding: 2px;
+        /* background: blueviolet; */
+        margin: 4px;
     }
 
     :deep(.grid-stack-item-content) {
         overflow: auto;
-        border-radius: 5px;
-        border: 1px solid #dbe3ef;
-        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        background: greenyellow;
     }
 
     :deep(.vue-widget-host) {
