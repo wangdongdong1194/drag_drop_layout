@@ -11,6 +11,7 @@ export type GridLayoutItem = {
 export type WidgetItem = GridLayoutItem & {
     component: Component
     componentProps?: Record<string, unknown>
+    scrollable?: boolean
 }
 
 export type GridStackBoardExpose = {

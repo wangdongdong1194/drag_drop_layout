@@ -107,6 +107,9 @@
             return false
         }
 
+        // Default is scrollable. Set scrollable: false to lock the card content.
+        contentEl.style.overflow = widget.scrollable === false ? 'hidden' : 'auto'
+
         const mountPoint = document.createElement('div')
         mountPoint.className = 'vue-widget-host'
         contentEl.replaceChildren(mountPoint)
@@ -218,15 +221,9 @@
     }
 
     :deep(.grid-stack-item-content) {
-        overflow: auto;
+        overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-    }
-
-    :deep(.grid-stack-item.is-selected .grid-stack-item-content) {
-        outline: 2px solid #2563eb;
-        outline-offset: -2px;
-        border-radius: 10px;
     }
 
     :deep(.vue-widget-host) {

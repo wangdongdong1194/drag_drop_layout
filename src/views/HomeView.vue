@@ -30,8 +30,8 @@
     let nextId = 1
 
     const widgets: WidgetItem[] = [
-        { id: 'a', component: TestContent, x: 2, y: 0, w: 4, h: 3 },
-        { id: 'bb', component: TestContent, x: 4, y: 0, w: 4, h: 3 },
+        { id: 'a', component: TestContent, x: 2, y: 0, w: 4, h: 3, scrollable: false },
+        { id: 'bb', component: TestContent, x: 4, y: 0, w: 4, h: 3, scrollable: true },
         {
             id: 'c',
             component: ImgTitleDesc,
@@ -46,6 +46,7 @@
             y: 0,
             w: 6,
             h: 4,
+            scrollable: false,
         },
     ]
 
@@ -133,6 +134,9 @@
 <style scoped>
     .home {
         padding: 4px;
+        min-width: 1280px;
+        max-width: 1280px;
+        margin: 0 auto;
     }
 
     .toolbar {
