@@ -1,9 +1,8 @@
-<!-- 大图 + 标题描述模板，图片和标题都支持点击跳转 -->
+<!-- 左侧矩形图片，鼠标悬停切换图片，点击标题跳转链接 -->
 <template>
     <div class="img_title_desc">
-        <div class="img_wrap" :class="{ clickable: !!props.link }" @click="handleNavigate">
-            <img :src="props.src" :title="props.title" class="img">
-        </div>
+        <img :src="currentSrc" :title="props.title" class="img" @mouseenter="showHoverImage"
+            @mouseleave="showDefaultImage">
         <div class="title_desc">
             <div class="title" :class="{ clickable: !!props.link }" @click="handleNavigate">
                 {{ props.title }}
@@ -13,13 +12,30 @@
     </div>
 </template>
 <script lang="ts" setup>
+    import { ref } from 'vue'
+
     const props = defineProps<{
         src: string
         title: string
+        src2?: string
         desc?: string
         link?: string
         openMode?: 'self' | 'blank'
     }>()
+
+    const currentSrc = ref(props.src)
+
+    const showHoverImage = () => {
+        if (!props.src2) {
+            return
+        }
+
+        currentSrc.value = props.src2
+    }
+
+    const showDefaultImage = () => {
+        currentSrc.value = props.src
+    }
 
     const handleNavigate = () => {
         if (!props.link) {
@@ -36,47 +52,39 @@
 </script>
 <style scoped>
     .img_title_desc {
-        background: #fff;
-        /* border-radius: 20px; */
-        /* overflow: hidden; */
-    }
-
-    .img_wrap {
-        overflow: hidden;
+        display: flex;
+        min-width: 150px;
+        width: 375px;
     }
 
     .img {
-        display: block;
-        width: 100%;
-        height: auto;
-        transition: transform 0.85s ease;
-        transform-origin: center center;
-    }
-
-    .img_wrap:hover .img {
-        transform: scale(1.08);
+        width: 95px;
+        height: 95px;
+        margin-right: 20px;
     }
 
     .title_desc {
-        margin: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        min-width: 0;
     }
 
-    .title {
-        font-weight: 400;
-        margin-bottom: 15px;
-        width: fit-content;
+    .title,
+    .desc {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .title:hover {
         color: blueviolet;
-    }
-
-    .clickable {
         cursor: pointer;
     }
 
     .desc {
         color: #999;
         font-size: 14px;
+        cursor: default;
     }
 </style>

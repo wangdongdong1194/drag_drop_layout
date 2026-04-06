@@ -1,3 +1,4 @@
+<!-- 大图 + 主标题 + 副标题模板，主副标题可分别配置跳转链接 -->
 <template>
     <div class="img_title_desc">
         <div class="img_wrap" :class="{ clickable: !!props.link }" @click="handleNavigate(props.link, props.openMode)">
@@ -7,7 +8,8 @@
             <div class="title" :class="{ clickable: !!props.link }" @click="handleNavigate(props.link, props.openMode)">
                 {{ props.title }}
             </div>
-            <div class="subTitle" :class="{ clickable: !!props.subTitleLink }" @click="handleNavigate(props.subTitleLink, props.openMode)">
+            <div class="subTitle" :class="{ clickable: !!props.subTitleLink }"
+                @click="handleNavigate(props.subTitleLink, props.openMode)">
                 {{ props.subTitle }}
             </div>
         </div>
@@ -83,7 +85,8 @@
         font-size: 14px;
         width: fit-content;
     }
+
     .subTitle:hover {
-    color: blueviolet;
+        color: blueviolet;
     }
 </style>

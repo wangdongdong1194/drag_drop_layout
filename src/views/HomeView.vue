@@ -21,7 +21,7 @@
     import { ref } from 'vue'
     import GridStackBoard from '../components/GridStackBoard.vue'
     import ImgTitleDesc from '../templates/img_title_desc.vue'
-    import ImgTitleSubTitle from '../templates/img_title_subTitle.vue'
+    import ImgTitleDesc2 from '../templates/img_title_desc_2.vue'
     import type { GridLayoutItem, GridStackBoardExpose, WidgetItem } from '../types/grid'
 
     const layoutData = ref<GridLayoutItem[]>([])
@@ -31,54 +31,22 @@
 
     const widgets: WidgetItem[] = [
         {
-            id: 'a',
-            component: ImgTitleDesc,
+            id: 'f',
+            component: ImgTitleDesc2,
             componentProps: {
                 src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
-                title: '默认图文卡片',
-                desc: '这是来自 HomeView 的初始传参这是来自 HomeView 的初始传参',
+                src2: 'https://p3.img.cctvpic.com/photoAlbum/page/performance/img/2022/10/27/1666837936015_760.png',
+                title: '春假 如何才能放得好',
+                desc: '央视网么放才能让自己真正得到休息呢？',
                 link: 'https://www.cctv.com',
                 openMode: 'blank',
             },
-            x: 1,
-            y: 0,
-            w: 4,
-            h: 4,
+            x: 0,
+            y: 5,
+            w: 5,
+            h: 2,
             scrollable: false,
-        },
-        {
-            id: 'bb',
-            component: ImgTitleDesc,
-            componentProps: {
-                src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
-                title: '默认图文卡片',
-                desc: '这是来自 HomeView 的初始传参这是来自 HomeView 的初始传参',
-                link: 'https://www.cctv.com',
-                openMode: 'blank',
-            },
-            x: 5,
-            y: 0,
-            w: 2,
-            h: 3,
-            scrollable: false,
-        },
-        {
-            id: 'c',
-            component: ImgTitleSubTitle,
-            componentProps: {
-                src: 'https://p1.img.cctvpic.com/photoAlbum/page/performance/img/2026/4/5/1775365753054_325.jpg',
-                title: '文卡片默文卡片默文卡片默文卡片默',
-                subTitle: '这是子标题',
-                link: 'https://www.cctv.com',
-                subTitleLink: 'https://www.cctv.com',
-                openMode: 'blank',
-            },
-            x: 5,
-            y: 0,
-            w: 2,
-            h: 3,
-            scrollable: false,
-        },
+        }
     ]
 
     const addNewWidget = () => {
