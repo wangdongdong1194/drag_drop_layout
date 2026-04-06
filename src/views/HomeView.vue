@@ -20,8 +20,8 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import GridStackBoard from '../components/GridStackBoard.vue'
-    import ImgTitleDesc from '../templates/img_title_desc.vue'
-    import ImgTitleDesc2 from '../templates/img_title_desc_2.vue'
+    import ImgTitleDesc from '../components/img_title_desc.vue'
+    import ImgTitleDesc2 from '../components/img_title_desc_2.vue'
     import type { GridLayoutItem, GridStackBoardExpose, WidgetItem } from '../types/grid'
 
     const layoutData = ref<GridLayoutItem[]>([])
